@@ -1,72 +1,62 @@
-﻿using Google.Protobuf.WellKnownTypes;
-using MySqlX.XDevAPI.Common;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
-using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace mysql_conection
 {
-    public partial class F_ConfirProdutoCar : Form
+    public partial class F_ConfirmCarOrc : Form
     {
-        F_Venda fv_Vendas;
-
-        public F_ConfirProdutoCar(F_Venda fv)
+        F_Orcamento f_Orcamento;
+        public F_ConfirmCarOrc(F_Orcamento fo)
         {
             InitializeComponent();
-            fv_Vendas = fv;
-        }
-
-        public string PegarValorTabela(int i)
-        {
-            return fv_Vendas.dt_tabelaDeProdutos.SelectedRows[0].Cells[i].Value.ToString();
+            f_Orcamento = fo;
         }
 
         public void AdicionarValorTabela(string[] row)
         {
-            fv_Vendas.dt_cart_item.ColumnCount = row.Length;
+            f_Orcamento.dtg_carinho.ColumnCount = row.Length;
             DataGridViewCellStyle columnHeaderStyle = new DataGridViewCellStyle();
             columnHeaderStyle.Font = new Font("Verdana", 8, FontStyle.Bold);
 
-            fv_Vendas.dt_cart_item.Columns[0].Name = "Cód.item";
-            fv_Vendas.dt_cart_item.Columns[1].Name = "Descrção";
-            fv_Vendas.dt_cart_item.Columns[2].Name = "Cód. barras";
-            fv_Vendas.dt_cart_item.Columns[3].Name = "Preço";
-            fv_Vendas.dt_cart_item.Columns[4].Name = "Preço Atacado";
-            fv_Vendas.dt_cart_item.Columns[5].Name = "Preço Promoção";
-            fv_Vendas.dt_cart_item.Columns[6].Name = "Quantidade";
-            fv_Vendas.dt_cart_item.Columns[7].Name = "SubTotal";
-            fv_Vendas.dt_cart_item.Columns[8].Name = "Desconto";
+            f_Orcamento.dtg_carinho.Columns[0].Name = "Cód.item";
+            f_Orcamento.dtg_carinho.Columns[1].Name = "Descrção";
+            //f_Orcamento.dtg_carinho.Columns[2].Name = "Cód. barras";
+            f_Orcamento.dtg_carinho.Columns[2].Name = "Preço";
+            f_Orcamento.dtg_carinho.Columns[3].Name = "Preço Atacado";
+            f_Orcamento.dtg_carinho.Columns[4].Name = "Preço Promoção";
+            f_Orcamento.dtg_carinho.Columns[5].Name = "Quantidade";
+            f_Orcamento.dtg_carinho.Columns[6].Name = "SubTotal";
+            f_Orcamento.dtg_carinho.Columns[7].Name = "Desconto";
+
             object[] rows = new object[] { row };
 
             foreach (string[] rowArray in rows)
             {
-                fv_Vendas.dt_cart_item.Rows.Add(rowArray);
+                f_Orcamento.dtg_carinho.Rows.Add(rowArray);
             }
 
-            fv_Vendas.tb_buscaProduto.Text = "";
+            f_Orcamento.tb_buscaProdutos.Text = "";
         }
 
-        private void F_ConfirProdutoCar_Load(object sender, EventArgs e)
+        private void F_ConfirmCarOrc_Load(object sender, EventArgs e)
         {
-            tb_coditem.Text = PegarValorTabela(0);
-            tb_descricao.Text = PegarValorTabela(1);
+            tb_coditem.Text = f_Orcamento.PegarValorTbProdutos(0);
+            tb_descricao.Text = f_Orcamento.PegarValorTbProdutos(1);
             tb_quantidade.Text = "1";
-            tb_precoUnitario.Text = PegarValorTabela(10);
-            tb_precoAtacado.Text = PegarValorTabela(11);
-            tb_precoPromocao.Text = PegarValorTabela(12);
-            tb_subTotal.Text = PegarValorTabela(10);
+            tb_precoUnitario.Text = f_Orcamento.PegarValorTbProdutos(10);
+            tb_precoAtacado.Text = f_Orcamento.PegarValorTbProdutos(11);
+            tb_precoPromocao.Text = f_Orcamento.PegarValorTbProdutos(12);
+            tb_subTotal.Text = f_Orcamento.PegarValorTbProdutos(10);
             tb_desconto.Text = "0";
-            lb_quantidade.Text = $"Quantidade({PegarValorTabela(13)})";
-            tb_subTotalDesconto.Text = PegarValorTabela(10);
-          ;
+            lb_quantidade.Text = $"Quantidade({f_Orcamento.PegarValorTbProdutos(13)})";
+            tb_subTotalDesconto.Text = f_Orcamento.PegarValorTbProdutos(10);
         }
 
         private void btn_cancelar_Click(object sender, EventArgs e)
@@ -74,23 +64,11 @@ namespace mysql_conection
             Close();
         }
 
-        private string  SomaSubTotal(string quantidade)
+        private string SomaSubTotal(string quantidade)
         {
-            float preco = float.Parse(PegarValorTabela(10));
+            float preco = float.Parse(f_Orcamento.PegarValorTbProdutos(10));
             return (preco * int.Parse(quantidade)).ToString();
         }
-
-        //private string SomentNumeros(string v)
-        //{
-        //    return String.Join("", System.Text.RegularExpressions.Regex.Split(v, @"[^\d]"));
-        //}
-
-        //public double CalcularPerce(string N1, string N2)
-        //{
-        //    double calc = ((double.Parse(N1)) * (double.Parse(N2)) / 100 - (double.Parse(N2)));
-
-        //    return (calc *= -1);
-        //}
 
         private Boolean VerificaErroCampoo()
         {
@@ -104,22 +82,22 @@ namespace mysql_conection
                 if (isNumber)
                 {
                     //("Somente numero");
-                    Btn_Confirmar.Enabled = true;
-                    Btn_Confirmar.BackColor = Color.Green;
+                    btn_Confirmar.Enabled = true;
+                    btn_Confirmar.BackColor = Color.Green;
                     isLiberar = true;
                 }
                 else if (!isNumber && temPerceNoCampo)
                 {
                     //("numero e porcentagem");
-                    Btn_Confirmar.Enabled = true;
-                    Btn_Confirmar.BackColor = Color.Green;
+                    btn_Confirmar.Enabled = true;
+                    btn_Confirmar.BackColor = Color.Green;
                     isLiberar = true;
                 }
                 else
                 {
                     //("numero e e outro simbulo");
-                    Btn_Confirmar.Enabled = false;
-                    Btn_Confirmar.BackColor = Color.Gray;
+                    btn_Confirmar.Enabled = false;
+                    btn_Confirmar.BackColor = Color.Gray;
                     isLiberar = false;
                 }
             }
@@ -132,23 +110,22 @@ namespace mysql_conection
             Boolean temPerceNoCampo = tb_desconto.Text.Contains("%");
             if (tb_quantidade.Text != "")
             {
-                if (int.Parse(SomenteNumeros.Convert(tb_quantidade.Text)) <= int.Parse(PegarValorTabela(13)))
+                if (int.Parse(SomenteNumeros.Convert(tb_quantidade.Text)) <= int.Parse(f_Orcamento.PegarValorTbProdutos(13)))
                 {
                     tb_quantidade.Text = SomenteNumeros.Convert(tb_quantidade.Text);
                 }
                 else
                 {
                     MessageBox.Show("Estoque insuficiente, E nescessario reabastecer");
-                    tb_quantidade.Text = PegarValorTabela(13);
+                    tb_quantidade.Text = f_Orcamento.PegarValorTbProdutos(13);
                 }
-
             }
 
 
             if (VerificaErroCampoo())
             {
                 tb_subTotal.Text = SomaSubTotal(SomenteNumeros.Convert(tb_quantidade.Text));
-                
+
                 if (temPerceNoCampo)
                 {
                     tb_subTotalDesconto.Text = CalcularPercet.Valor(SomenteNumeros.Convert(tb_desconto.Text), SomaSubTotal(tb_quantidade.Text)).ToString("F");
@@ -166,18 +143,19 @@ namespace mysql_conection
                 }
             }
         }
-        private void Btn_Confirmar_Click(object sender, EventArgs e)
+
+        private void btn_Confirmar_Click(object sender, EventArgs e)
         {
-            fv_Vendas.rowSelecionada = true;
+            f_Orcamento.rowSelecionada = true;
             string eNull = (tb_quantidade.Text == "" ? tb_quantidade.Text = "1" : tb_quantidade.Text);
 
             string[] row = new string[] {
-                PegarValorTabela(0), //"Cód.item"
-                PegarValorTabela(1), //"Descrção"
-                PegarValorTabela(7), //"Cód. barras"
-                PegarValorTabela(10),//"Preço"
-                PegarValorTabela(11),//"Preço atacado"
-                PegarValorTabela(12),//"Preço Promoção"
+                f_Orcamento.PegarValorTbProdutos(0), //"Cód.item"
+                f_Orcamento.PegarValorTbProdutos(1), //"Descrção"
+                //f_Orcamento.PegarValorTbProdutos(7), //"Cód. barras"
+                f_Orcamento.PegarValorTbProdutos(10),//"Preço"
+                f_Orcamento.PegarValorTbProdutos(11),//"Preço atacado"
+                f_Orcamento.PegarValorTbProdutos(12),//"Preço Promoção"
                 eNull,
                 tb_subTotalDesconto.Text,
                 tb_desconto.Text
@@ -196,11 +174,11 @@ namespace mysql_conection
             AtuaCampo();
         }
 
-        private void F_ConfirProdutoCar_FormClosed(object sender, FormClosedEventArgs e)
+        private void F_ConfirmCarOrc_FormClosed(object sender, FormClosedEventArgs e)
         {
-            fv_Vendas.SomaTotal();
-         
+            f_Orcamento.SomaTotal();
         }
 
+        
     }
 }

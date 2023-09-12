@@ -143,6 +143,12 @@
     <Compile Include="F_Cliente.Designer.cs">
       <DependentUpon>F_Cliente.cs</DependentUpon>
     </Compile>
+    <Compile Include="F_ConfirmCarOrc.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_ConfirmCarOrc.Designer.cs">
+      <DependentUpon>F_ConfirmCarOrc.cs</DependentUpon>
+    </Compile>
     <Compile Include="F_ConfirProdutoCar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -269,6 +275,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_Cliente.resx">
       <DependentUpon>F_Cliente.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_ConfirmCarOrc.resx">
+      <DependentUpon>F_ConfirmCarOrc.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_ConfirProdutoCar.resx">
       <DependentUpon>F_ConfirProdutoCar.cs</DependentUpon>

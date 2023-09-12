@@ -38,8 +38,6 @@ namespace mysql_conection
                                tb_precoAtacado as 'Preço de Atacado',
                                tb_precoPromocao as 'Preço de Promoção', 
                                tb_estoque as 'Estoque',
-                               tb_email as 'E-mail',
-                               tb_site as 'Site',
                                tb_observacao as 'Observação',
                                tb_disponibilidade as 'Disponível'
                                FROM tb_produtos WHERE  tb_descricaoProduto LIKE '%%" + filtro + "%%'");
@@ -243,13 +241,11 @@ namespace mysql_conection
                     else
                     {
                         totalDesc += float.Parse(dt_cart_item.Rows[i].Cells[8].Value.ToString());
-                    }
-                   
+                    }    
                 }
                 tb_valorTotal.Text = total.ToString();
                 tb_totalDesconto.Text = totalDesc.ToString("C");
             }
-         
         }
 
         private void time_DataHora_Tick(object sender, EventArgs e)
@@ -266,18 +262,26 @@ namespace mysql_conection
 
         private void btn_cancelarItem_Click(object sender, EventArgs e)
         {
-            rowSelecionada = false;
-            var indice = dt_cart_item.SelectedRows[0].Index;
-            if (indice >= 0)
+            if (dt_cart_item.RowCount > 0)
             {
-                var linha = dt_cart_item.Rows[indice];
-                if (!linha.IsNewRow)
+                rowSelecionada = false;
+                var indice = dt_cart_item.SelectedRows[0].Index;
+                if (indice >= 0)
                 {
-                    dt_cart_item.Rows.Remove(linha);
-                    tb_valorTotal.Text = ((float.Parse(tb_valorTotal.Text) - float.Parse(tb_subTotal.Text)).ToString("F"));
+                    var linha = dt_cart_item.Rows[indice];
+                    if (!linha.IsNewRow)
+                    {
+                        tb_valorTotal.Text = (float.Parse(tb_valorTotal.Text) - float.Parse(PegarValorTabela(7))).ToString("F");
+                        dt_cart_item.Rows.Remove(linha);
+                    }
                 }
+                rowSelecionada = true;
             }
-            rowSelecionada = true;
+            else
+            {
+                MessageBox.Show("Sem valor");
+            }
+            
         }
 
         private void btn_cancelarVenda_Click(object sender, EventArgs e)
@@ -290,8 +294,6 @@ namespace mysql_conection
                 dt_cart_item.DataSource = null;
                 StatusCaixa();
             }
-       
-
         }
     }
 }

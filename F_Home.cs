@@ -140,14 +140,14 @@ namespace mysql_conection
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_Orcamento f_Orcamento = new F_Orcamento();
-            f_Orcamento.tabControl1.SelectedIndex = 1;
+            f_Orcamento.tab_orcamento.SelectedIndex = 1;
             f_Orcamento.ShowDialog();
         }
 
         private void listarToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_Orcamento f_Orcamento = new F_Orcamento();
-            f_Orcamento.tabControl1.SelectedIndex = 0;
+            f_Orcamento.tab_orcamento.SelectedIndex = 0;
             f_Orcamento.ShowDialog();
         }
 
