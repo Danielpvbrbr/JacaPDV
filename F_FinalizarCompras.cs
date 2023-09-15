@@ -238,7 +238,7 @@ namespace mysql_conection
                 string desconto = Line(i, 8);
                 string total = Line(i, 7);
                 string tipo_de_venda = tipoPagamento;
-                string dataHora = f_ConfirProdDados.lb_dataHora.Text;
+                string dataHora = DataFormatada.data;
                 string Cliente = cbx_clientes.Text;
                 string userFuncionario = Auth.user;
                 string tipoCartao = "";

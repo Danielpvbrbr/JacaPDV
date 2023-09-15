@@ -42,7 +42,7 @@
             this.tb_busca = new System.Windows.Forms.TextBox();
             this.btn_deletar_item = new System.Windows.Forms.Button();
             this.tab_NovoOrcamento = new System.Windows.Forms.TabPage();
-            this.btn_deletarTudo = new System.Windows.Forms.Button();
+            this.btn_finalizar = new System.Windows.Forms.Button();
             this.label10 = new System.Windows.Forms.Label();
             this.tb_totalDesconto = new System.Windows.Forms.TextBox();
             this.dtg_produtos = new System.Windows.Forms.DataGridView();
@@ -163,7 +163,7 @@
             this.dtg_orcamento.ReadOnly = true;
             this.dtg_orcamento.RowHeadersVisible = false;
             this.dtg_orcamento.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dtg_orcamento.Size = new System.Drawing.Size(661, 441);
+            this.dtg_orcamento.Size = new System.Drawing.Size(661, 454);
             this.dtg_orcamento.TabIndex = 1;
             this.dtg_orcamento.DoubleClick += new System.EventHandler(this.dtg_orcamento_DoubleClick);
             // 
@@ -173,12 +173,13 @@
             this.btn_adicionar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_adicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_adicionar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_adicionar.Location = new System.Drawing.Point(178, 489);
+            this.btn_adicionar.Location = new System.Drawing.Point(178, 503);
             this.btn_adicionar.Name = "btn_adicionar";
             this.btn_adicionar.Size = new System.Drawing.Size(151, 35);
             this.btn_adicionar.TabIndex = 2;
             this.btn_adicionar.Text = "Adicionar Novo";
             this.btn_adicionar.UseVisualStyleBackColor = false;
+            this.btn_adicionar.Click += new System.EventHandler(this.btn_adicionar_Click);
             // 
             // tb_busca
             // 
@@ -196,7 +197,7 @@
             this.btn_deletar_item.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deletar_item.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deletar_item.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_deletar_item.Location = new System.Drawing.Point(335, 489);
+            this.btn_deletar_item.Location = new System.Drawing.Point(335, 503);
             this.btn_deletar_item.Name = "btn_deletar_item";
             this.btn_deletar_item.Size = new System.Drawing.Size(151, 35);
             this.btn_deletar_item.TabIndex = 4;
@@ -205,7 +206,7 @@
             // 
             // tab_NovoOrcamento
             // 
-            this.tab_NovoOrcamento.Controls.Add(this.btn_deletarTudo);
+            this.tab_NovoOrcamento.Controls.Add(this.btn_finalizar);
             this.tab_NovoOrcamento.Controls.Add(this.label10);
             this.tab_NovoOrcamento.Controls.Add(this.tb_totalDesconto);
             this.tab_NovoOrcamento.Controls.Add(this.dtg_produtos);
@@ -228,25 +229,25 @@
             this.tab_NovoOrcamento.Text = "Novo Orçamento";
             this.tab_NovoOrcamento.UseVisualStyleBackColor = true;
             // 
-            // btn_deletarTudo
+            // btn_finalizar
             // 
-            this.btn_deletarTudo.BackColor = System.Drawing.Color.Red;
-            this.btn_deletarTudo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_deletarTudo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_deletarTudo.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_deletarTudo.Location = new System.Drawing.Point(425, 500);
-            this.btn_deletarTudo.Name = "btn_deletarTudo";
-            this.btn_deletarTudo.Size = new System.Drawing.Size(149, 35);
-            this.btn_deletarTudo.TabIndex = 94;
-            this.btn_deletarTudo.Text = "Deletar Tudo";
-            this.btn_deletarTudo.UseVisualStyleBackColor = false;
-            this.btn_deletarTudo.Click += new System.EventHandler(this.btn_deletarTudo_Click);
+            this.btn_finalizar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_finalizar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_finalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_finalizar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_finalizar.Location = new System.Drawing.Point(271, 496);
+            this.btn_finalizar.Name = "btn_finalizar";
+            this.btn_finalizar.Size = new System.Drawing.Size(149, 35);
+            this.btn_finalizar.TabIndex = 97;
+            this.btn_finalizar.Text = "Finalizar";
+            this.btn_finalizar.UseVisualStyleBackColor = false;
+            this.btn_finalizar.Click += new System.EventHandler(this.btn_finalizar_Click);
             // 
             // label10
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(428, 445);
+            this.label10.Location = new System.Drawing.Point(425, 445);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(67, 15);
             this.label10.TabIndex = 88;
@@ -257,7 +258,7 @@
             this.tb_totalDesconto.BackColor = System.Drawing.Color.Navy;
             this.tb_totalDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_totalDesconto.ForeColor = System.Drawing.Color.White;
-            this.tb_totalDesconto.Location = new System.Drawing.Point(408, 463);
+            this.tb_totalDesconto.Location = new System.Drawing.Point(405, 463);
             this.tb_totalDesconto.Name = "tb_totalDesconto";
             this.tb_totalDesconto.Size = new System.Drawing.Size(113, 27);
             this.tb_totalDesconto.TabIndex = 87;
@@ -293,7 +294,7 @@
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(203, 445);
+            this.label7.Location = new System.Drawing.Point(200, 445);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(39, 15);
             this.label7.TabIndex = 85;
@@ -303,7 +304,7 @@
             // 
             this.label6.AutoSize = true;
             this.label6.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label6.Location = new System.Drawing.Point(302, 445);
+            this.label6.Location = new System.Drawing.Point(299, 445);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(81, 15);
             this.label6.TabIndex = 84;
@@ -314,7 +315,7 @@
             this.tb_quantidade.BackColor = System.Drawing.Color.RoyalBlue;
             this.tb_quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_quantidade.ForeColor = System.Drawing.Color.White;
-            this.tb_quantidade.Location = new System.Drawing.Point(289, 463);
+            this.tb_quantidade.Location = new System.Drawing.Point(286, 463);
             this.tb_quantidade.Name = "tb_quantidade";
             this.tb_quantidade.Size = new System.Drawing.Size(113, 27);
             this.tb_quantidade.TabIndex = 83;
@@ -326,7 +327,7 @@
             this.tb_valorTotal.BackColor = System.Drawing.Color.RoyalBlue;
             this.tb_valorTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 13F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_valorTotal.ForeColor = System.Drawing.Color.White;
-            this.tb_valorTotal.Location = new System.Drawing.Point(170, 463);
+            this.tb_valorTotal.Location = new System.Drawing.Point(167, 463);
             this.tb_valorTotal.Name = "tb_valorTotal";
             this.tb_valorTotal.Size = new System.Drawing.Size(113, 27);
             this.tb_valorTotal.TabIndex = 82;
@@ -392,6 +393,8 @@
             this.dtg_carinho.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_carinho.Size = new System.Drawing.Size(661, 371);
             this.dtg_carinho.TabIndex = 77;
+            this.dtg_carinho.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtg_carinho_RowsAdded);
+            this.dtg_carinho.RowsRemoved += new System.Windows.Forms.DataGridViewRowsRemovedEventHandler(this.dtg_carinho_RowsRemoved);
             // 
             // btn_deletarSelect
             // 
@@ -399,7 +402,7 @@
             this.btn_deletarSelect.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_deletarSelect.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_deletarSelect.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_deletarSelect.Location = new System.Drawing.Point(262, 500);
+            this.btn_deletarSelect.Location = new System.Drawing.Point(426, 496);
             this.btn_deletarSelect.Name = "btn_deletarSelect";
             this.btn_deletarSelect.Size = new System.Drawing.Size(149, 35);
             this.btn_deletarSelect.TabIndex = 76;
@@ -413,7 +416,7 @@
             this.btn_salvar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_salvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_salvar.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_salvar.Location = new System.Drawing.Point(101, 500);
+            this.btn_salvar.Location = new System.Drawing.Point(116, 496);
             this.btn_salvar.Name = "btn_salvar";
             this.btn_salvar.Size = new System.Drawing.Size(149, 35);
             this.btn_salvar.TabIndex = 75;
@@ -515,6 +518,6 @@
         public System.Windows.Forms.TextBox tb_buscaProdutos;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.TextBox tb_totalDesconto;
-        private System.Windows.Forms.Button btn_deletarTudo;
+        private System.Windows.Forms.Button btn_finalizar;
     }
 }

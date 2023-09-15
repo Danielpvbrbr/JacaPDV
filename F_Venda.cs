@@ -281,7 +281,6 @@ namespace mysql_conection
             {
                 MessageBox.Show("Sem valor");
             }
-            
         }
 
         private void btn_cancelarVenda_Click(object sender, EventArgs e)

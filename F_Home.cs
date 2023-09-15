@@ -131,11 +131,6 @@ namespace mysql_conection
             f_Gerenciamento.ShowDialog();
         }
 
-        private void contasAReceberToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            F_ContasAreceber f_ContasAreceber = new F_ContasAreceber();
-            f_ContasAreceber.ShowDialog();
-        }
 
         private void novoToolStripMenuItem_Click(object sender, EventArgs e)
         {
@@ -160,14 +155,14 @@ namespace mysql_conection
         private void listaDeContaAReberToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_ContasAreceber f_ContasAreceber = new F_ContasAreceber();
-            f_ContasAreceber.tabControl1.SelectedIndex = 0;
+            f_ContasAreceber.tab_contasAreceber.SelectedIndex = 0;
             f_ContasAreceber.ShowDialog();
         }
 
         private void novaContaAReceberToolStripMenuItem_Click(object sender, EventArgs e)
         {
             F_ContasAreceber f_ContasAreceber = new F_ContasAreceber();
-            f_ContasAreceber.tabControl1.SelectedIndex = 1;
+            f_ContasAreceber.tab_contasAreceber.SelectedIndex = 1;
             f_ContasAreceber.ShowDialog();
         }
 

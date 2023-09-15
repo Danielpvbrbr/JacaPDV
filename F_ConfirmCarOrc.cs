@@ -34,9 +34,10 @@ namespace mysql_conection
             f_Orcamento.dtg_carinho.Columns[5].Name = "Quantidade";
             f_Orcamento.dtg_carinho.Columns[6].Name = "SubTotal";
             f_Orcamento.dtg_carinho.Columns[7].Name = "Desconto";
+            f_Orcamento.dtg_carinho.Columns[8].Name = "_";
 
             object[] rows = new object[] { row };
-
+       
             foreach (string[] rowArray in rows)
             {
                 f_Orcamento.dtg_carinho.Rows.Add(rowArray);
@@ -158,7 +159,8 @@ namespace mysql_conection
                 f_Orcamento.PegarValorTbProdutos(12),//"Preço Promoção"
                 eNull,
                 tb_subTotalDesconto.Text,
-                tb_desconto.Text
+                tb_desconto.Text,
+                "#"
                 };
             AdicionarValorTabela(row);
             Close();
