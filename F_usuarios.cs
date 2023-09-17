@@ -114,7 +114,7 @@ namespace mysql_conection
 
         private void btn_salvar_Click(object sender, EventArgs e)
         {
-            string date = DataFormatada.data;
+            string date = DataFormatada.dataReverse;
             string nome = tb_nomeFuncionario.Text;
             string usuario = tb_usuarioFuncionario.Text;
             string senha = tb_senhaFuncionario.Text;

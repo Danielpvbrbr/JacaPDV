@@ -67,13 +67,7 @@ namespace mysql_conection
                $"   VALOR TOTAL                                                                     R$ {f_ConfirProdDados.tb_valorTotal.Text}\r\n";
             Rtb_notaFiscal.SelectedText = rodape;
 
-            for (int i = 0; i < db_cliente.Rows.Count; i++)
-            {
-                string nome = db_cliente.Rows[i].Field<string>("clienteNome").ToString();
-                string[] rowsNome = { nome };
-                cbx_clientes.Items.AddRange(rowsNome);
-            
-            }
+            Clientes.add(cbx_clientes);
 
         }
         private void InfoCliente(DataTable cbx, int i)
@@ -238,7 +232,7 @@ namespace mysql_conection
                 string desconto = Line(i, 8);
                 string total = Line(i, 7);
                 string tipo_de_venda = tipoPagamento;
-                string dataHora = DataFormatada.data;
+                string dataHora = DataFormatada.dataReverse;
                 string Cliente = cbx_clientes.Text;
                 string userFuncionario = Auth.user;
                 string tipoCartao = "";

@@ -57,6 +57,9 @@ namespace mysql_conection
 
         private void F_Estoque_Load(object sender, EventArgs e)
         {
+            Fornecedor.add(cbx_fornecedor);
+            Setor.add(cbx_setor);
+            Fabricante.add(cbx_fabricante);
             tb_busca.Focus();
             VerificaCampoVazio();
             btn_delete.Enabled = false;

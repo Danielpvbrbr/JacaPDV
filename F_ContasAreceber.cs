@@ -15,7 +15,6 @@ namespace mysql_conection
     public partial class F_ContasAreceber : Form
     {
         DataTable dt = new DataTable();
-        DataTable db_cliente = SendDB.Get("SELECT * FROM tb_cliente;");
 
         public F_ContasAreceber()
         {
@@ -32,13 +31,7 @@ namespace mysql_conection
         {
             ObterContaAreceber(tb_busca.Text);
 
-            for (int i = 0; i < db_cliente.Rows.Count; i++)
-            {
-                string nome = db_cliente.Rows[i].Field<string>("clienteNome").ToString();
-                string[] rowsNome = { nome };
-                cbx_clientes.Items.AddRange(rowsNome);
-            }
-
+            Clientes.add(cbx_clientes);
         }
 
         private void btn_salvar_Click(object sender, EventArgs e)

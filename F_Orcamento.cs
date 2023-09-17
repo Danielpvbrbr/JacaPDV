@@ -84,12 +84,7 @@ namespace mysql_conection
         {
             ObterOrcamentoFilter(tb_busca.Text);
 
-            for (int i = 0; i < db_cliente.Rows.Count; i++)
-            {
-                string nome = db_cliente.Rows[i].Field<string>("clienteNome").ToString();
-                string[] rowsNome = { nome };
-                cbx_clientes.Items.AddRange(rowsNome);
-            }
+            Clientes.add(cbx_clientes);
             cbx_clientes.Text = "Selecionar Cliente";
             tb_busca.Focus();
             dtg_produtos.Visible = false;
@@ -203,7 +198,7 @@ namespace mysql_conection
             string desconto = Line(i, 7);
             string total = Line(i, 6);
             string tipo_de_venda = "Orçamento";
-            string dataHora = DataFormatada.data;
+            string dataHora = DataFormatada.dataReverse;
             string Cliente = cbx_clientes.Text;
             string userFuncionario = Auth.user;
             string tipoCartao = "";
@@ -216,7 +211,7 @@ namespace mysql_conection
             string cliente = cbx_clientes.Text;
             int quant = dtg_carinho.RowCount;
             string total = tb_valorTotal.Text;
-            string data = DataFormatada.data;
+            string data = DataFormatada.dataReverse;
             string status = "Pendente";
             string desconto = tb_totalDesconto.Text;
 

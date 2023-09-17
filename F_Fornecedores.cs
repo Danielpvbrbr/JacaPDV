@@ -103,7 +103,7 @@ namespace mysql_conection
         {
             string id = tb_codItem.Text;
             string nome = tb_nomeFornecedor.Text;
-            string data = DataFormatada.data;
+            string data = DataFormatada.dataReverse;
             string endereco = tb_endereco.Text;
             string numero = num_numero.Value.ToString();
             string bairro = tb_bairro.Text;

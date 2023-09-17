@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -42,6 +42,7 @@
             this.tabEstoque = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.btn_limparCampo = new System.Windows.Forms.Button();
             this.num_precoPromocao = new System.Windows.Forms.NumericUpDown();
             this.num_precoAtacado = new System.Windows.Forms.NumericUpDown();
             this.num_precoVenda = new System.Windows.Forms.NumericUpDown();
@@ -75,7 +76,6 @@
             this.tb_id = new System.Windows.Forms.TextBox();
             this.btn_delete = new System.Windows.Forms.Button();
             this.btn_salvar = new System.Windows.Forms.Button();
-            this.btn_limparCampo = new System.Windows.Forms.Button();
             this.panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dgv_produtos)).BeginInit();
@@ -154,14 +154,14 @@
             this.dgv_produtos.AllowUserToAddRows = false;
             this.dgv_produtos.AllowUserToDeleteRows = false;
             this.dgv_produtos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dgv_produtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_produtos.EnableHeadersVisualStyles = false;
             this.dgv_produtos.Location = new System.Drawing.Point(5, 42);
@@ -285,6 +285,20 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Novo Produto";
             this.tabPage2.UseVisualStyleBackColor = true;
+            // 
+            // btn_limparCampo
+            // 
+            this.btn_limparCampo.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_limparCampo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_limparCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_limparCampo.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_limparCampo.Location = new System.Drawing.Point(416, 489);
+            this.btn_limparCampo.Name = "btn_limparCampo";
+            this.btn_limparCampo.Size = new System.Drawing.Size(151, 35);
+            this.btn_limparCampo.TabIndex = 125;
+            this.btn_limparCampo.Text = "Limpar";
+            this.btn_limparCampo.UseVisualStyleBackColor = false;
+            this.btn_limparCampo.Click += new System.EventHandler(this.btn_limparCampo_Click);
             // 
             // num_precoPromocao
             // 
@@ -517,7 +531,7 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(503, 109);
+            this.label12.Location = new System.Drawing.Point(501, 109);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(32, 13);
             this.label12.TabIndex = 93;
@@ -639,20 +653,6 @@
             this.btn_salvar.Text = "Salvar";
             this.btn_salvar.UseVisualStyleBackColor = false;
             this.btn_salvar.Click += new System.EventHandler(this.button5_Click);
-            // 
-            // btn_limparCampo
-            // 
-            this.btn_limparCampo.BackColor = System.Drawing.Color.RoyalBlue;
-            this.btn_limparCampo.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_limparCampo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_limparCampo.ForeColor = System.Drawing.SystemColors.Control;
-            this.btn_limparCampo.Location = new System.Drawing.Point(416, 489);
-            this.btn_limparCampo.Name = "btn_limparCampo";
-            this.btn_limparCampo.Size = new System.Drawing.Size(151, 35);
-            this.btn_limparCampo.TabIndex = 125;
-            this.btn_limparCampo.Text = "Limpar";
-            this.btn_limparCampo.UseVisualStyleBackColor = false;
-            this.btn_limparCampo.Click += new System.EventHandler(this.btn_limparCampo_Click);
             // 
             // F_Estoque
             // 

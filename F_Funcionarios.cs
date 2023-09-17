@@ -46,13 +46,7 @@ namespace mysql_conection
         private void ObterListCargo()
         {
             cbx_cargo.Items.Clear();
-            DataTable dt = new DataTable();
-            dt = SendDB.Get("SELECT * FROM tb_cargos");
-
-            for (int i = 0; i < dt.Rows.Count; i++)
-            {
-                cbx_cargo.Items.Add(dt.Rows[i].Field<string>("cargo").ToString());
-            }
+            Cargo.add(cbx_cargo);
         }
 
         private void F_Funcionarios_Load(object sender, EventArgs e)
@@ -203,5 +197,6 @@ namespace mysql_conection
         {
             Delete();
         }
+
     }
 }

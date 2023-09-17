@@ -177,6 +177,11 @@ namespace mysql_conection
             }
         }
 
+        public string Teste(int i, int ex)
+        {
+            return dt_cart_item.Rows[i].Cells[ex].Value.ToString();
+        }
+
         public string PegarValorTabela(int i)
         {
             return dt_cart_item.SelectedRows[0].Cells[i].Value.ToString();
@@ -283,15 +288,43 @@ namespace mysql_conection
             }
         }
 
+        public void AddOrdenVendas(int i)
+        {
+            string codVenda = Teste(i, 0).PadLeft(5, '0');
+            string descricao = Teste(i, 1).ToUpper();
+            int quantidade = int.Parse(Teste(i, 6));
+            string preco_unitario = Teste(i, 3);
+            string precoAtacado = Teste(i, 4);
+            string precoPromocional = Teste(i, 5);
+            string desconto = Teste(i, 8);
+            string total = Teste(i, 7);
+            string tipo_de_venda = "Cancelado";
+            string dataHora = DataFormatada.dataReverse;
+            string Cliente = "";
+            string userFuncionario = Auth.user;
+            string tipoCartao = "";
+          
+            SendDB.Post("INSERT INTO tb_ordenVendas (codVenda, descricao, quantidade, preco_unitario, precoAtacado, precoPromocional, desconto, total,tipo_de_venda, dataHora, Cliente, userFuncionario, tipoCartao) VALUES ('" + codVenda + "','" + descricao + "','" + quantidade + "','" + preco_unitario + "','" + precoAtacado + "','" + precoPromocional + "','" + desconto + "','" + total + "','" + tipo_de_venda + "','" + dataHora + "','" + Cliente + "','" + userFuncionario + "','" + tipoCartao + "');");
+        }
+
         private void btn_cancelarVenda_Click(object sender, EventArgs e)
         {
             DialogResult res = MessageBox.Show("Ao confirma o Carrinho sera Limpado","Confirma Limpeza", MessageBoxButtons.YesNo) ;
             if (res == DialogResult.Yes)
             {
-                rowSelecionada = false;
-                dt_cart_item.Rows.Clear();
-                dt_cart_item.DataSource = null;
-                StatusCaixa();
+                for (int i = 0; i < dt_cart_item.Rows.Count; i++)
+                {
+                    AddOrdenVendas(i);
+                }
+
+                if (SendDB.isRespostaPost)
+                {
+                    rowSelecionada = false;
+                    dt_cart_item.Rows.Clear();
+                    dt_cart_item.DataSource = null;
+                    StatusCaixa();
+                }
+              
             }
         }
     }

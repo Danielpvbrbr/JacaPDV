@@ -8,6 +8,7 @@ namespace mysql_conection
 {
     internal class DataFormatada
     {
-        static public string data = string.Format("{0:d}", DateTime.Now);
+        static public string dataf = DateTime.Now.ToString("dd/MM/yyyy");
+        static public string dataReverse = DateTime.Now.ToString("yyyy/MM/dd");
     }
 }
