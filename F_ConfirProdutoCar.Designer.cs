@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.Btn_Confirmar = new System.Windows.Forms.Button();
             this.btn_cancelar = new System.Windows.Forms.Button();
@@ -43,8 +42,7 @@
             this.title = new System.Windows.Forms.Label();
             this.panel1 = new System.Windows.Forms.Panel();
             this.tb_precoUnitario = new System.Windows.Forms.TextBox();
-            this.tb_precoAtacado = new System.Windows.Forms.TextBox();
-            this.tb_precoPromocao = new System.Windows.Forms.TextBox();
+            this.tb_precoCusto = new System.Windows.Forms.TextBox();
             this.tb_subTotal = new System.Windows.Forms.TextBox();
             this.tb_quantidade = new System.Windows.Forms.TextBox();
             this.tb_desconto = new System.Windows.Forms.TextBox();
@@ -54,18 +52,6 @@
             this.panel1.SuspendLayout();
             this.SuspendLayout();
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.BackColor = System.Drawing.Color.Transparent;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(461, 120);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(127, 17);
-            this.label1.TabIndex = 52;
-            this.label1.Text = "Preço Promocional";
-            // 
             // label5
             // 
             this.label5.AutoSize = true;
@@ -74,9 +60,9 @@
             this.label5.ForeColor = System.Drawing.SystemColors.Control;
             this.label5.Location = new System.Drawing.Point(316, 120);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(101, 17);
+            this.label5.Size = new System.Drawing.Size(85, 17);
             this.label5.TabIndex = 50;
-            this.label5.Text = "Preço Atacado";
+            this.label5.Text = "Preço Custo";
             // 
             // Btn_Confirmar
             // 
@@ -138,9 +124,9 @@
             this.label2.ForeColor = System.Drawing.SystemColors.Control;
             this.label2.Location = new System.Drawing.Point(170, 120);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(94, 17);
+            this.label2.Size = new System.Drawing.Size(90, 17);
             this.label2.TabIndex = 42;
-            this.label2.Text = "Valor Unitário";
+            this.label2.Text = "Preço Venda";
             // 
             // lb_quantidade
             // 
@@ -248,39 +234,22 @@
             this.tb_precoUnitario.Text = "0";
             this.tb_precoUnitario.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
-            // tb_precoAtacado
+            // tb_precoCusto
             // 
-            this.tb_precoAtacado.BackColor = System.Drawing.Color.Navy;
-            this.tb_precoAtacado.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_precoAtacado.Enabled = false;
-            this.tb_precoAtacado.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_precoAtacado.ForeColor = System.Drawing.SystemColors.Info;
-            this.tb_precoAtacado.Location = new System.Drawing.Point(319, 141);
-            this.tb_precoAtacado.Multiline = true;
-            this.tb_precoAtacado.Name = "tb_precoAtacado";
-            this.tb_precoAtacado.ReadOnly = true;
-            this.tb_precoAtacado.Size = new System.Drawing.Size(134, 37);
-            this.tb_precoAtacado.TabIndex = 55;
-            this.tb_precoAtacado.TabStop = false;
-            this.tb_precoAtacado.Text = "0";
-            this.tb_precoAtacado.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // tb_precoPromocao
-            // 
-            this.tb_precoPromocao.BackColor = System.Drawing.Color.Navy;
-            this.tb_precoPromocao.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.tb_precoPromocao.Enabled = false;
-            this.tb_precoPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.tb_precoPromocao.ForeColor = System.Drawing.SystemColors.Info;
-            this.tb_precoPromocao.Location = new System.Drawing.Point(464, 141);
-            this.tb_precoPromocao.Multiline = true;
-            this.tb_precoPromocao.Name = "tb_precoPromocao";
-            this.tb_precoPromocao.ReadOnly = true;
-            this.tb_precoPromocao.Size = new System.Drawing.Size(134, 37);
-            this.tb_precoPromocao.TabIndex = 56;
-            this.tb_precoPromocao.TabStop = false;
-            this.tb_precoPromocao.Text = "0";
-            this.tb_precoPromocao.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            this.tb_precoCusto.BackColor = System.Drawing.Color.Navy;
+            this.tb_precoCusto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.tb_precoCusto.Enabled = false;
+            this.tb_precoCusto.Font = new System.Drawing.Font("Microsoft Sans Serif", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_precoCusto.ForeColor = System.Drawing.SystemColors.Info;
+            this.tb_precoCusto.Location = new System.Drawing.Point(319, 141);
+            this.tb_precoCusto.Multiline = true;
+            this.tb_precoCusto.Name = "tb_precoCusto";
+            this.tb_precoCusto.ReadOnly = true;
+            this.tb_precoCusto.Size = new System.Drawing.Size(134, 37);
+            this.tb_precoCusto.TabIndex = 55;
+            this.tb_precoCusto.TabStop = false;
+            this.tb_precoCusto.Text = "0";
+            this.tb_precoCusto.TextAlign = System.Windows.Forms.HorizontalAlignment.Right;
             // 
             // tb_subTotal
             // 
@@ -335,7 +304,7 @@
             this.tb_subTotalDesconto.Enabled = false;
             this.tb_subTotalDesconto.Font = new System.Drawing.Font("Microsoft Sans Serif", 27F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.tb_subTotalDesconto.ForeColor = System.Drawing.SystemColors.Info;
-            this.tb_subTotalDesconto.Location = new System.Drawing.Point(445, 212);
+            this.tb_subTotalDesconto.Location = new System.Drawing.Point(445, 248);
             this.tb_subTotalDesconto.Multiline = true;
             this.tb_subTotalDesconto.Name = "tb_subTotalDesconto";
             this.tb_subTotalDesconto.ReadOnly = true;
@@ -351,7 +320,7 @@
             this.label7.BackColor = System.Drawing.Color.Transparent;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label7.ForeColor = System.Drawing.SystemColors.Control;
-            this.label7.Location = new System.Drawing.Point(442, 191);
+            this.label7.Location = new System.Drawing.Point(442, 227);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(132, 17);
             this.label7.TabIndex = 60;
@@ -374,10 +343,8 @@
             this.Controls.Add(this.tb_desconto);
             this.Controls.Add(this.tb_quantidade);
             this.Controls.Add(this.tb_subTotal);
-            this.Controls.Add(this.tb_precoPromocao);
-            this.Controls.Add(this.tb_precoAtacado);
+            this.Controls.Add(this.tb_precoCusto);
             this.Controls.Add(this.tb_precoUnitario);
-            this.Controls.Add(this.label1);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.Btn_Confirmar);
             this.Controls.Add(this.btn_cancelar);
@@ -406,7 +373,6 @@
         }
 
         #endregion
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Button Btn_Confirmar;
         private System.Windows.Forms.Button btn_cancelar;
@@ -421,8 +387,7 @@
         private System.Windows.Forms.Label title;
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.TextBox tb_precoUnitario;
-        private System.Windows.Forms.TextBox tb_precoAtacado;
-        private System.Windows.Forms.TextBox tb_precoPromocao;
+        private System.Windows.Forms.TextBox tb_precoCusto;
         private System.Windows.Forms.TextBox tb_subTotal;
         private System.Windows.Forms.TextBox tb_quantidade;
         private System.Windows.Forms.TextBox tb_desconto;

@@ -1,9 +1,11 @@
-﻿using System;
+﻿using MySqlX.XDevAPI;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -58,7 +60,7 @@ namespace mysql_conection
 
             for (int i = 0; i < rows.Count; i++)
             {
-                Rtb_notaFiscal.SelectedText = $"  {i.ToString().PadLeft(4, '0')}    {Line(i, 0).PadLeft(5, '0')}    {Line(i, 1).Substring(0, (Line(i, 1).Length >= 22) ?  22: Line(i, 1).Length) }    {Line(i, 6)}    {"Un"}    {Line(i, 3)}    {Line(i, 7)}\n";
+                Rtb_notaFiscal.SelectedText = $"  {i.ToString().PadLeft(4, '0')}    {Line(i, 0).PadLeft(5, '0')}    {Line(i, 1).Substring(0, (Line(i, 1).Length >= 22) ?  22: Line(i, 1).Length) }    {Line(i, 4)}    {"Un"}    {Line(i, 3)}    {float.Parse(Line(i, 5)).ToString("F")}\n";
             }
 
             string rodape =
@@ -116,6 +118,11 @@ namespace mysql_conection
                     tb_limite.Text = "0,00";
                     tb_limiteRest.Text = "0,00";
                     cbx_clientes.Text = "Selecionar Cliente";
+                    rdb_credito.Checked = false;
+                    rdb_debito.Checked = false;
+
+                    btn_finalizar.Enabled = false;
+                    btn_finalizar.BackColor = Color.Gray;
                     break;
                 case "cart":
                     gpb_tipoDeCartao.Visible = true;
@@ -129,6 +136,10 @@ namespace mysql_conection
                     tb_limite.Text = "0,00";
                     tb_limiteRest.Text = "0,00";
                     cbx_clientes.Text = "Selecionar Cliente";
+                    rdb_credito.Checked = true;
+                    btn_finalizar.Enabled = true;
+                    btn_finalizar.BackColor = Color.Green;
+                    tb_valorPago.Text = "0,00";
                     break;
                 case "praz":
                     btn_prazo.Enabled = true;
@@ -139,6 +150,9 @@ namespace mysql_conection
                     btn_dinheiro.BackColor = Color.Gray;
                     btn_prazo.BackColor = Color.Green;
                     tipoPagamento = "Prazo";
+                    rdb_credito.Checked = false;
+                    rdb_debito.Checked = false;
+                    tb_valorPago.Text = "0,00";
                     break;
             }
 
@@ -210,36 +224,31 @@ namespace mysql_conection
             }
 
         }
-
-        private void btn_finalizar_Click(object sender, EventArgs e)
+        private void GuardarVendas()
         {
-      
             for (int i = 0; i < rows.Count; i++)
             {
                 DataTable db = new DataTable();
-                db = SendDB.Get("SELECT tb_estoque  From tb_produtos WHERE id='" + Line(i, 0).ToString() + "'");
+                db = SendDB.Get("SELECT tb_estoque,tb_precoCusto From tb_produtos WHERE id='" + Line(i, 0).ToString() + "'");
                 string qtdDb = db.Rows[0].Field<Int64>("tb_estoque").ToString();
                 int qtdRest;
-
-                qtdRest = int.Parse(qtdDb) - int.Parse(Line(i, 6));
-
+                qtdRest = int.Parse(qtdDb) - int.Parse(Line(i, 4));
                 string codVenda = Line(i, 0).PadLeft(5, '0');
                 string descricao = Line(i, 1);
-                int quantidade = int.Parse(Line(i, 6));
+                int quantidade = int.Parse(Line(i, 4));
                 string preco_unitario = Line(i, 3);
-                string precoAtacado = Line(i, 4);
-                string precoPromocional = Line(i, 5);
-                string desconto = Line(i, 8);
-                string total = Line(i, 7);
+                string precoCusto = db.Rows[0].Field<string>("tb_precoCusto"); ;
+                string desconto = Line(i, 6);
+                string total = float.Parse(Line(i, 5)).ToString("F");
                 string tipo_de_venda = tipoPagamento;
                 string dataHora = DataFormatada.dataReverse;
-                string Cliente = cbx_clientes.Text;
+                string Cliente = cbx_clientes.Text != "Selecionar Cliente" ? cbx_clientes.Text : "";
                 string userFuncionario = Auth.user;
-                string tipoCartao = "";
+                string tipoCartao = btn_cartao.BackColor == Color.Green ? (rdb_credito.Checked ? "Crédito" : "Debito") : "";
 
-                SendDB.Update("UPDATE tb_produtos SET tb_estoque='"+ qtdRest + "' WHERE id='"+ Line(i, 0) + "'");
-                SendDB.Post("INSERT INTO tb_ordenVendas (codVenda, descricao, quantidade, preco_unitario, precoAtacado, precoPromocional, desconto, total,tipo_de_venda, dataHora, Cliente, userFuncionario, tipoCartao) VALUES ('" + codVenda + "','" + descricao + "','" + quantidade + "','" + preco_unitario + "','" + precoAtacado + "','" + precoPromocional + "','" + desconto + "','" + total + "','" + tipo_de_venda + "','" + dataHora + "','" + Cliente + "','" + userFuncionario + "','"+ tipoCartao + "');");
-               
+                SendDB.Update("UPDATE tb_produtos SET tb_estoque='" + qtdRest + "' WHERE id='" + Line(i, 0) + "'");
+                SendDB.Post("INSERT INTO tb_ordenVendas (codVenda, descricao, quantidade, preco_unitario, precoCusto, desconto, total,tipo_de_venda, dataHora, Cliente, userFuncionario, tipoCartao) VALUES ('" + codVenda + "','" + descricao + "','" + quantidade + "','" + preco_unitario + "','" + precoCusto + "','" + desconto + "','" + total + "','" + tipo_de_venda + "','" + dataHora + "','" + Cliente + "','" + userFuncionario + "','" + tipoCartao + "');");
+
                 if (tipoPagamento == "Prazo")
                 {
                     string id = db_cliente.Rows[cbx_clientes.SelectedIndex].Field<Int64>("id").ToString();
@@ -256,6 +265,22 @@ namespace mysql_conection
 
                 Close();
             }
+        }
+
+        private void btn_finalizar_Click(object sender, EventArgs e)
+        {
+            if (btn_dinheiro.BackColor == Color.Green &&  float.Parse(tb_valorPago.Text) >= float.Parse(tb_totalApagar.Text))
+            {
+                GuardarVendas();
+            }
+            else if (btn_prazo.BackColor == Color.Green && cbx_clientes.Text != "Selecionar Cliente") {
+                GuardarVendas();
+            }
+            else if(btn_cartao.BackColor == Color.Green)
+            {
+                GuardarVendas();
+            }
+            
         }
 
         private void cbx_clientes_SelectedIndexChanged(object sender, EventArgs e)

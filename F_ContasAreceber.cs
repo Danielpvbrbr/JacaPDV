@@ -23,7 +23,7 @@ namespace mysql_conection
 
         private void ObterContaAreceber(string filtro)
         {
-            dt = SendDB.Get("SELECT id as 'Cód. Item', cliente as 'Cliente', valor as 'Valor', vencimento as 'Vencimento', descricao as 'Descrição' FROM tb_contasAreceber WHERE cliente LIKE '%%" + filtro + "%%'");
+            dt = SendDB.Get("SELECT id as 'Cód. Item', cliente as 'Cliente', valor as 'Valor', vencimento as 'Vencimento', descricao as 'Descrição', data as 'Data Criação', status as 'Status' FROM tb_contasAreceber WHERE cliente LIKE '%%" + filtro + "%%'");
             dtg_contasAreceber.DataSource = dt;
         }
 
@@ -40,13 +40,14 @@ namespace mysql_conection
             string descricao = tb_descricao.Text;
             string valor = tb_valor.Text;
             string vecimento = dtp_vencimento.Text;
-         
+            string data = DataFormatada.dataReverse;
+            string status = cbx_status.Text;
 
             if (cbx_clientes.Text != "Selecionar Cliente" && tb_valor.Text != "0,00" && tb_valor.Text != " ")
             {
                 if (btn_salvar.Text == "Salvar")
                 {
-                    SendDB.Post("INSERT INTO tb_contasAreceber (cliente, descricao, valor, vencimento) VALUES ('" + cliente + "','"+ descricao + "', '"+ valor + "','"+ vecimento + "')");
+                    SendDB.Post("INSERT INTO tb_contasAreceber (cliente, descricao, status, data, valor, vencimento) VALUES ('" + cliente + "','"+ descricao + "','"+status+"', '"+ data + "','"+ valor + "','"+ vecimento + "')");
                     if (SendDB.isRespostaPost)
                     {
                         ObterContaAreceber(tb_busca.Text);
@@ -56,7 +57,7 @@ namespace mysql_conection
                 else
                 {
                     string id = ObterSelecion(0);
-                    SendDB.Update("UPDATE tb_contasAreceber SET cliente ='" + cliente + "', descricao = '" + descricao + "', valor = '" + valor + "', vencimento = '" + vecimento + "' WHERE id = '"+id+"'");
+                    SendDB.Update("UPDATE tb_contasAreceber SET cliente ='" + cliente + "', status='"+status+"', descricao = '" + descricao + "', valor = '" + valor + "', vencimento = '" + vecimento + "' WHERE id = '"+id+"'");
                     if (SendDB.isRespostaUpdate)
                     {
                         ObterContaAreceber(tb_busca.Text);
@@ -84,6 +85,7 @@ namespace mysql_conection
             dtp_vencimento.Text = ObterSelecion(3);
             tb_descricao.Text = ObterSelecion(4);
             tab_novo.Text = "Visualizar";
+            cbx_status.Text = ObterSelecion(6);
             cbx_clientes.Enabled = false;
             btn_salvar.Text = "Alterar";
             btn_deletar.Enabled = true;
@@ -99,6 +101,7 @@ namespace mysql_conection
                 tb_valor.Text = "0,00"; 
                 dtp_vencimento.Text = ""; 
                 tb_descricao.Text = "";
+                cbx_status.Text = "Pendente";
                 cbx_clientes.Enabled = true ;
                 btn_salvar.Text = "Salvar";
                 btn_deletar.Enabled = false;

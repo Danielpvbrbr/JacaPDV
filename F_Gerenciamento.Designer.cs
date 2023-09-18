@@ -28,17 +28,18 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.label5 = new System.Windows.Forms.Label();
+            this.tb_totalVendas = new System.Windows.Forms.TextBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
-            this.label4 = new System.Windows.Forms.Label();
+            this.tb_totaLucros = new System.Windows.Forms.TextBox();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.label3 = new System.Windows.Forms.Label();
+            this.tb_totalDescontos = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.label2 = new System.Windows.Forms.Label();
+            this.tb_totalCancelados = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.tb_totalRecebidos = new System.Windows.Forms.TextBox();
             this.dtg_ordenVenda = new System.Windows.Forms.DataGridView();
             this.panel2 = new System.Windows.Forms.Panel();
             this.label7 = new System.Windows.Forms.Label();
@@ -50,7 +51,7 @@
             this.dtp_periodo1 = new System.Windows.Forms.DateTimePicker();
             this.dtp_periodo2 = new System.Windows.Forms.DateTimePicker();
             this.label6 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_buscar = new System.Windows.Forms.Button();
             this.cbx_tipo = new System.Windows.Forms.ComboBox();
             this.panel1.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -80,7 +81,7 @@
             // 
             // groupBox5
             // 
-            this.groupBox5.Controls.Add(this.label5);
+            this.groupBox5.Controls.Add(this.tb_totalVendas);
             this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox5.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox5.Location = new System.Drawing.Point(845, 9);
@@ -90,19 +91,22 @@
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Total de Vendas";
             // 
-            // label5
+            // tb_totalVendas
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(47, 24);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(86, 25);
-            this.label5.TabIndex = 0;
-            this.label5.Text = "R$ 0,00";
+            this.tb_totalVendas.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tb_totalVendas.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_totalVendas.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalVendas.ForeColor = System.Drawing.SystemColors.Window;
+            this.tb_totalVendas.Location = new System.Drawing.Point(44, 24);
+            this.tb_totalVendas.Name = "tb_totalVendas";
+            this.tb_totalVendas.Size = new System.Drawing.Size(100, 23);
+            this.tb_totalVendas.TabIndex = 0;
+            this.tb_totalVendas.Text = "R$ 0,00";
+            this.tb_totalVendas.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox4
             // 
-            this.groupBox4.Controls.Add(this.label4);
+            this.groupBox4.Controls.Add(this.tb_totaLucros);
             this.groupBox4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox4.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox4.Location = new System.Drawing.Point(637, 9);
@@ -112,19 +116,22 @@
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Total de Lucros";
             // 
-            // label4
+            // tb_totaLucros
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(47, 24);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(86, 25);
-            this.label4.TabIndex = 0;
-            this.label4.Text = "R$ 0,00";
+            this.tb_totaLucros.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tb_totaLucros.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_totaLucros.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totaLucros.ForeColor = System.Drawing.Color.Lime;
+            this.tb_totaLucros.Location = new System.Drawing.Point(46, 24);
+            this.tb_totaLucros.Name = "tb_totaLucros";
+            this.tb_totaLucros.Size = new System.Drawing.Size(100, 23);
+            this.tb_totaLucros.TabIndex = 1;
+            this.tb_totaLucros.Text = "R$ 0,00";
+            this.tb_totaLucros.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.label3);
+            this.groupBox3.Controls.Add(this.tb_totalDescontos);
             this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox3.Location = new System.Drawing.Point(429, 9);
@@ -134,19 +141,22 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Total de Descontos";
             // 
-            // label3
+            // tb_totalDescontos
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(47, 24);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(86, 25);
-            this.label3.TabIndex = 0;
-            this.label3.Text = "R$ 0,00";
+            this.tb_totalDescontos.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tb_totalDescontos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_totalDescontos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalDescontos.ForeColor = System.Drawing.Color.White;
+            this.tb_totalDescontos.Location = new System.Drawing.Point(45, 24);
+            this.tb_totalDescontos.Name = "tb_totalDescontos";
+            this.tb_totalDescontos.Size = new System.Drawing.Size(100, 23);
+            this.tb_totalDescontos.TabIndex = 1;
+            this.tb_totalDescontos.Text = "R$ 0,00";
+            this.tb_totalDescontos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.label2);
+            this.groupBox2.Controls.Add(this.tb_totalCancelados);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox2.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox2.Location = new System.Drawing.Point(222, 9);
@@ -156,19 +166,22 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Total de Cancelados";
             // 
-            // label2
+            // tb_totalCancelados
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label2.Location = new System.Drawing.Point(47, 24);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 25);
-            this.label2.TabIndex = 0;
-            this.label2.Text = "R$ 0,00";
+            this.tb_totalCancelados.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tb_totalCancelados.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_totalCancelados.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalCancelados.ForeColor = System.Drawing.Color.Crimson;
+            this.tb_totalCancelados.Location = new System.Drawing.Point(45, 24);
+            this.tb_totalCancelados.Name = "tb_totalCancelados";
+            this.tb_totalCancelados.Size = new System.Drawing.Size(100, 23);
+            this.tb_totalCancelados.TabIndex = 1;
+            this.tb_totalCancelados.Text = "R$ 0,00";
+            this.tb_totalCancelados.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.label1);
+            this.groupBox1.Controls.Add(this.tb_totalRecebidos);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.ForeColor = System.Drawing.SystemColors.Control;
             this.groupBox1.Location = new System.Drawing.Point(15, 9);
@@ -178,29 +191,43 @@
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "Total de Recebimentos";
             // 
-            // label1
+            // tb_totalRecebidos
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.ForeColor = System.Drawing.SystemColors.Control;
-            this.label1.Location = new System.Drawing.Point(47, 24);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(86, 25);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "R$ 0,00";
+            this.tb_totalRecebidos.BackColor = System.Drawing.Color.RoyalBlue;
+            this.tb_totalRecebidos.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.tb_totalRecebidos.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.tb_totalRecebidos.ForeColor = System.Drawing.SystemColors.Window;
+            this.tb_totalRecebidos.Location = new System.Drawing.Point(46, 24);
+            this.tb_totalRecebidos.Name = "tb_totalRecebidos";
+            this.tb_totalRecebidos.Size = new System.Drawing.Size(100, 23);
+            this.tb_totalRecebidos.TabIndex = 1;
+            this.tb_totalRecebidos.Text = "0,00";
+            this.tb_totalRecebidos.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // dtg_ordenVenda
             // 
             this.dtg_ordenVenda.AllowUserToAddRows = false;
             this.dtg_ordenVenda.AllowUserToDeleteRows = false;
             this.dtg_ordenVenda.BackgroundColor = System.Drawing.SystemColors.ButtonFace;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dtg_ordenVenda.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dtg_ordenVenda.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dtg_ordenVenda.EnableHeadersVisualStyles = false;
             this.dtg_ordenVenda.Location = new System.Drawing.Point(13, 78);
+            this.dtg_ordenVenda.MultiSelect = false;
             this.dtg_ordenVenda.Name = "dtg_ordenVenda";
             this.dtg_ordenVenda.ReadOnly = true;
             this.dtg_ordenVenda.RowHeadersVisible = false;
+            this.dtg_ordenVenda.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dtg_ordenVenda.Size = new System.Drawing.Size(1032, 473);
             this.dtg_ordenVenda.TabIndex = 2;
+            this.dtg_ordenVenda.RowsAdded += new System.Windows.Forms.DataGridViewRowsAddedEventHandler(this.dtg_ordenVenda_RowsAdded);
             // 
             // panel2
             // 
@@ -298,25 +325,25 @@
             this.label6.TabIndex = 6;
             this.label6.Text = "a";
             // 
-            // button1
+            // btn_buscar
             // 
-            this.button1.BackColor = System.Drawing.Color.RoyalBlue;
-            this.button1.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.ForeColor = System.Drawing.SystemColors.Control;
-            this.button1.Location = new System.Drawing.Point(940, 46);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(106, 24);
-            this.button1.TabIndex = 7;
-            this.button1.Text = "Buscar";
-            this.button1.UseVisualStyleBackColor = false;
+            this.btn_buscar.BackColor = System.Drawing.Color.RoyalBlue;
+            this.btn_buscar.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.btn_buscar.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_buscar.ForeColor = System.Drawing.SystemColors.Control;
+            this.btn_buscar.Location = new System.Drawing.Point(940, 46);
+            this.btn_buscar.Name = "btn_buscar";
+            this.btn_buscar.Size = new System.Drawing.Size(106, 24);
+            this.btn_buscar.TabIndex = 7;
+            this.btn_buscar.Text = "Buscar";
+            this.btn_buscar.UseVisualStyleBackColor = false;
+            this.btn_buscar.Click += new System.EventHandler(this.btn_buscar_Click);
             // 
             // cbx_tipo
             // 
             this.cbx_tipo.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbx_tipo.FormattingEnabled = true;
             this.cbx_tipo.Items.AddRange(new object[] {
-            "Vendas",
             "Vendas Avista",
             "Venda a Prazo",
             "Recebimento a Prazo",
@@ -335,7 +362,7 @@
             this.BackColor = System.Drawing.Color.Azure;
             this.ClientSize = new System.Drawing.Size(1059, 653);
             this.Controls.Add(this.cbx_tipo);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.btn_buscar);
             this.Controls.Add(this.label6);
             this.Controls.Add(this.dtp_periodo2);
             this.Controls.Add(this.dtp_periodo1);
@@ -373,16 +400,11 @@
 
         private System.Windows.Forms.Panel panel1;
         private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.Label label1;
         private System.Windows.Forms.DataGridView dtg_ordenVenda;
         private System.Windows.Forms.GroupBox groupBox4;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.Label label3;
         private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.Label label2;
         private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem impressãoToolStripMenuItem;
@@ -390,10 +412,15 @@
         private System.Windows.Forms.DateTimePicker dtp_periodo1;
         private System.Windows.Forms.DateTimePicker dtp_periodo2;
         private System.Windows.Forms.Label label6;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_buscar;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ToolStripMenuItem imprimirToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem baixarPDFToolStripMenuItem;
         private System.Windows.Forms.ComboBox cbx_tipo;
+        private System.Windows.Forms.TextBox tb_totalVendas;
+        private System.Windows.Forms.TextBox tb_totaLucros;
+        private System.Windows.Forms.TextBox tb_totalDescontos;
+        private System.Windows.Forms.TextBox tb_totalCancelados;
+        private System.Windows.Forms.TextBox tb_totalRecebidos;
     }
 }

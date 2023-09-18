@@ -47,8 +47,6 @@ namespace mysql_conection
                                tb_setor as 'Setor',
                                tb_precoCusto as 'Preço de Custo',
                                tb_precoVenda as 'Preço de Venda', 
-                               tb_precoAtacado as 'Preço de Atacado',
-                               tb_precoPromocao as 'Preço de Promoção', 
                                tb_estoque as 'Estoque',
                                tb_observacao as 'Observação',
                                tb_disponibilidade as 'Disponível'
@@ -98,8 +96,6 @@ namespace mysql_conection
             cbx_setor.Text = "";
             num_precoCusto.Value = 0;
             num_precoVenda.Value = 0;
-            num_precoAtacado.Value = 0;
-            num_precoPromocao.Value = 0;
             numb_estoque.Value = 0;
             tb_observacao.Text = "";
             rd_disponivel.Checked = false;
@@ -133,11 +129,10 @@ namespace mysql_conection
             string setor = cbx_setor.Text;
             Decimal precoCusto = num_precoCusto.Value;
             Decimal precoVenda = num_precoVenda.Value;
-            Decimal precoAtacado = num_precoAtacado.Value;
-            Decimal precoPromocao = num_precoPromocao.Value;
             Decimal estoque = numb_estoque.Value;
             string observacao = tb_observacao.Text;
             string disponibilidade = rd_disponivel.Checked ? "Disponível" : "Indisponível";
+            string data = DataFormatada.dataReverse;
 
             if (btn_salvar.Text == "Salvar")
             {
@@ -151,20 +146,17 @@ namespace mysql_conection
                         tb_setor,
                         tb_precoCusto,
                         tb_precoVenda,
-                        tb_precoAtacado,
-                        tb_precoPromocao,
                         tb_estoque,
-                        tb_email,
-                        tb_site,
                         tb_observacao,
-                        tb_disponibilidade
-                        ) VALUES ('" + descricaoProduto + "','" + codInterno + "', '" + typeUnidade + "', '" + fornecedor + "', '" + fabricante + "', '" + codBarras + "','" + setor + "', '" + precoCusto + "', '" + precoVenda + "','" + precoAtacado + "', '" + precoPromocao + "', '" + estoque + "', '" + observacao + "', '" + disponibilidade + "')");
+                        tb_disponibilidade,
+                        date
+                        ) VALUES ('" + descricaoProduto + "','" + codInterno + "', '" + typeUnidade + "', '" + fornecedor + "', '" + fabricante + "', '" + codBarras + "','" + setor + "', '" + precoCusto + "', '" + precoVenda + "','" + estoque + "', '" + observacao + "', '" + disponibilidade + "', '"+data+"')");
             }
             else
             {
                 if (idSelected >= 1)
                 {
-                    SendDB.Update(@"UPDATE tb_produtos SET tb_descricaoProduto='" + descricaoProduto + "', tb_codInterno = '" + codInterno + "', tb_typeUnidade = '" + typeUnidade + "', tb_fornecedor = '" + fornecedor + "', tb_fabricante = '" + fabricante + "', tb_codBarras = '" + codBarras + "', tb_setor = '" + setor + "', tb_precoCusto = '" + precoCusto + "', tb_precoVenda = '" + precoVenda + "', tb_precoAtacado = '" + precoAtacado + "', tb_precoPromocao = '" + precoPromocao + "', tb_estoque = '" + estoque + "', tb_observacao = '" + observacao + "', tb_disponibilidade = '" + disponibilidade + "' WHERE id='"+idSelected+"'");
+                    SendDB.Update(@"UPDATE tb_produtos SET tb_descricaoProduto='" + descricaoProduto + "', tb_codInterno = '" + codInterno + "', tb_typeUnidade = '" + typeUnidade + "', tb_fornecedor = '" + fornecedor + "', tb_fabricante = '" + fabricante + "', tb_codBarras = '" + codBarras + "', tb_setor = '" + setor + "', tb_precoCusto = '" + precoCusto + "', tb_precoVenda = '" + precoVenda + "', tb_estoque = '" + estoque + "', tb_observacao = '" + observacao + "', tb_disponibilidade = '" + disponibilidade + "' WHERE id='"+idSelected+"'");
                 }
                 else
                 {
@@ -227,8 +219,6 @@ namespace mysql_conection
                 cbx_setor.Text = dt.Rows[0].Field<string>("tb_setor");
                 num_precoCusto.Value = Convert.ToDecimal(dt.Rows[0].Field<string>("tb_precoCusto"));
                 num_precoVenda.Value = Convert.ToDecimal(dt.Rows[0].Field<string>("tb_precoVenda"));
-                num_precoAtacado.Value = Convert.ToDecimal(dt.Rows[0].Field<string>("tb_precoAtacado"));
-                num_precoPromocao.Value = Convert.ToDecimal(dt.Rows[0].Field<string>("tb_precoPromocao"));
                 numb_estoque.Value = dt.Rows[0].Field<Int64>("tb_estoque");
                 tb_observacao.Text = dt.Rows[0].Field<string>("tb_observacao");
                 string disponibilidade = dt.Rows[0].Field<string>("tb_disponibilidade");
@@ -244,8 +234,10 @@ namespace mysql_conection
 
                 btn_delete.Enabled = true;
                 btn_delete.BackColor = Color.Crimson;
+
                 tabEstoque.SelectedIndex = 1;
                 btn_salvar.Text = "Alterar";
+
             }
         }
 
@@ -253,6 +245,17 @@ namespace mysql_conection
         {
             LimparCampo();
             tabEstoque.SelectedIndex = 0;
+        }
+
+        private void tabEstoque_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (tabEstoque.SelectedIndex == 0)
+            {
+                LimparCampo();
+                btn_salvar.Text = "Salvar";
+                btn_delete.Enabled = false;
+                btn_delete.BackColor = Color.Gray;
+            }
         }
     }
 }

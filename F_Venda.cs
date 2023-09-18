@@ -35,8 +35,6 @@ namespace mysql_conection
                                tb_setor as 'Setor',
                                tb_precoCusto as 'Preço de Custo',
                                tb_precoVenda as 'Preço de Venda', 
-                               tb_precoAtacado as 'Preço de Atacado',
-                               tb_precoPromocao as 'Preço de Promoção', 
                                tb_estoque as 'Estoque',
                                tb_observacao as 'Observação',
                                tb_disponibilidade as 'Disponível'
@@ -195,9 +193,8 @@ namespace mysql_conection
         private void dt_tabelaDeProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             rowSelecionada = true;
-            if (int.Parse(PegarValorTbProdutos(13)) > 0)
+            if (int.Parse(PegarValorTbProdutos(11)) > 0)
             {
-            
                 F_ConfirProdutoCar f_ConfirProdutoCar = new F_ConfirProdutoCar(this);
                 f_ConfirProdutoCar.ShowDialog();
 
@@ -214,7 +211,7 @@ namespace mysql_conection
                 tb_quant.Text = PegarValorTabela(6);
                 tb_codBarras.Text = PegarValorTabela(2);
                 tb_precoUnitario.Text = PegarValorTabela(3);
-                tb_subTotal.Text = PegarValorTabela(7);
+                tb_subTotal.Text = PegarValorTabela(5);
                 StatusCaixa();
             }
             else
@@ -237,18 +234,18 @@ namespace mysql_conection
             {
                 for (int i = 0; i < quantLinha; i++)
                 {
-                    total += float.Parse(dt_cart_item.Rows[i].Cells[7].Value.ToString());
+                    total += float.Parse(dt_cart_item.Rows[i].Cells[5].Value.ToString());
 
-                    if (dt_cart_item.Rows[i].Cells[8].Value.ToString().Contains("%"))
+                    if (dt_cart_item.Rows[i].Cells[6].Value.ToString().Contains("%"))
                     {
-                        totalDesc += float.Parse(CalcularPercet.Rest(SomenteNumeros.Convert(dt_cart_item.Rows[i].Cells[8].Value.ToString()), dt_cart_item.Rows[i].Cells[3].Value.ToString()).ToString());
+                        totalDesc += float.Parse(CalcularPercet.Rest(SomenteNumeros.Convert(dt_cart_item.Rows[i].Cells[6].Value.ToString()), dt_cart_item.Rows[i].Cells[3].Value.ToString()).ToString());
                     }
                     else
                     {
-                        totalDesc += float.Parse(dt_cart_item.Rows[i].Cells[8].Value.ToString());
+                        totalDesc += float.Parse(dt_cart_item.Rows[i].Cells[6].Value.ToString());
                     }    
                 }
-                tb_valorTotal.Text = total.ToString();
+                tb_valorTotal.Text = total.ToString("F");
                 tb_totalDesconto.Text = totalDesc.ToString("C");
             }
         }
@@ -276,7 +273,7 @@ namespace mysql_conection
                     var linha = dt_cart_item.Rows[indice];
                     if (!linha.IsNewRow)
                     {
-                        tb_valorTotal.Text = (float.Parse(tb_valorTotal.Text) - float.Parse(PegarValorTabela(7))).ToString("F");
+                        tb_valorTotal.Text = (float.Parse(tb_valorTotal.Text) - float.Parse(PegarValorTabela(6))).ToString("F");
                         dt_cart_item.Rows.Remove(linha);
                     }
                 }
@@ -290,21 +287,23 @@ namespace mysql_conection
 
         public void AddOrdenVendas(int i)
         {
+            DataTable db = new DataTable();
+            db = SendDB.Get("SELECT tb_estoque,tb_precoCusto From tb_produtos WHERE id='" + Teste(i, 0).ToString() + "'");
+           
             string codVenda = Teste(i, 0).PadLeft(5, '0');
             string descricao = Teste(i, 1).ToUpper();
-            int quantidade = int.Parse(Teste(i, 6));
+            int quantidade = int.Parse(Teste(i, 4));
             string preco_unitario = Teste(i, 3);
-            string precoAtacado = Teste(i, 4);
-            string precoPromocional = Teste(i, 5);
-            string desconto = Teste(i, 8);
-            string total = Teste(i, 7);
+            string precoCusto = db.Rows[0].Field<string>("tb_precoCusto");
+            string desconto = Teste(i, 6);
+            string total = Teste(i, 5);
             string tipo_de_venda = "Cancelado";
             string dataHora = DataFormatada.dataReverse;
             string Cliente = "";
             string userFuncionario = Auth.user;
             string tipoCartao = "";
           
-            SendDB.Post("INSERT INTO tb_ordenVendas (codVenda, descricao, quantidade, preco_unitario, precoAtacado, precoPromocional, desconto, total,tipo_de_venda, dataHora, Cliente, userFuncionario, tipoCartao) VALUES ('" + codVenda + "','" + descricao + "','" + quantidade + "','" + preco_unitario + "','" + precoAtacado + "','" + precoPromocional + "','" + desconto + "','" + total + "','" + tipo_de_venda + "','" + dataHora + "','" + Cliente + "','" + userFuncionario + "','" + tipoCartao + "');");
+            SendDB.Post("INSERT INTO tb_ordenVendas (codVenda, descricao, quantidade, preco_unitario, precoCusto, desconto, total,tipo_de_venda, dataHora, Cliente, userFuncionario, tipoCartao) VALUES ('" + codVenda + "','" + descricao + "','" + quantidade + "','" + preco_unitario + "','" + precoCusto + "','" + desconto + "','" + total + "','" + tipo_de_venda + "','" + dataHora + "','" + Cliente + "','" + userFuncionario + "','" + tipoCartao + "');");
         }
 
         private void btn_cancelarVenda_Click(object sender, EventArgs e)
@@ -312,8 +311,10 @@ namespace mysql_conection
             DialogResult res = MessageBox.Show("Ao confirma o Carrinho sera Limpado","Confirma Limpeza", MessageBoxButtons.YesNo) ;
             if (res == DialogResult.Yes)
             {
+    
                 for (int i = 0; i < dt_cart_item.Rows.Count; i++)
                 {
+                   
                     AddOrdenVendas(i);
                 }
 

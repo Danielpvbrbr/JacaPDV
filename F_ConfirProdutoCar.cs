@@ -39,11 +39,9 @@ namespace mysql_conection
             fv_Vendas.dt_cart_item.Columns[1].Name = "Descrção";
             fv_Vendas.dt_cart_item.Columns[2].Name = "Cód. barras";
             fv_Vendas.dt_cart_item.Columns[3].Name = "Preço";
-            fv_Vendas.dt_cart_item.Columns[4].Name = "Preço Atacado";
-            fv_Vendas.dt_cart_item.Columns[5].Name = "Preço Promoção";
-            fv_Vendas.dt_cart_item.Columns[6].Name = "Quantidade";
-            fv_Vendas.dt_cart_item.Columns[7].Name = "SubTotal";
-            fv_Vendas.dt_cart_item.Columns[8].Name = "Desconto";
+            fv_Vendas.dt_cart_item.Columns[4].Name = "Quantidade";
+            fv_Vendas.dt_cart_item.Columns[5].Name = "SubTotal";
+            fv_Vendas.dt_cart_item.Columns[6].Name = "Desconto";
             object[] rows = new object[] { row };
 
             foreach (string[] rowArray in rows)
@@ -56,15 +54,15 @@ namespace mysql_conection
 
         private void F_ConfirProdutoCar_Load(object sender, EventArgs e)
         {
+            //Custo 9 venda 10
             tb_coditem.Text = PegarValorTabela(0);
             tb_descricao.Text = PegarValorTabela(1);
             tb_quantidade.Text = "1";
+            tb_precoCusto.Text = PegarValorTabela(9);
             tb_precoUnitario.Text = PegarValorTabela(10);
-            tb_precoAtacado.Text = PegarValorTabela(11);
-            tb_precoPromocao.Text = PegarValorTabela(12);
             tb_subTotal.Text = PegarValorTabela(10);
             tb_desconto.Text = "0";
-            lb_quantidade.Text = $"Quantidade({PegarValorTabela(13)})";
+            lb_quantidade.Text = $"Quantidade({PegarValorTabela(11)})";
             tb_subTotalDesconto.Text = PegarValorTabela(10);
           ;
         }
@@ -79,18 +77,6 @@ namespace mysql_conection
             float preco = float.Parse(PegarValorTabela(10));
             return (preco * int.Parse(quantidade)).ToString();
         }
-
-        //private string SomentNumeros(string v)
-        //{
-        //    return String.Join("", System.Text.RegularExpressions.Regex.Split(v, @"[^\d]"));
-        //}
-
-        //public double CalcularPerce(string N1, string N2)
-        //{
-        //    double calc = ((double.Parse(N1)) * (double.Parse(N2)) / 100 - (double.Parse(N2)));
-
-        //    return (calc *= -1);
-        //}
 
         private Boolean VerificaErroCampoo()
         {
@@ -132,7 +118,7 @@ namespace mysql_conection
             Boolean temPerceNoCampo = tb_desconto.Text.Contains("%");
             if (tb_quantidade.Text != "")
             {
-                if (int.Parse(SomenteNumeros.Convert(tb_quantidade.Text)) <= int.Parse(PegarValorTabela(13)))
+                if (int.Parse(SomenteNumeros.Convert(tb_quantidade.Text)) <= int.Parse(PegarValorTabela(11)))
                 {
                     tb_quantidade.Text = SomenteNumeros.Convert(tb_quantidade.Text);
                 }
@@ -176,8 +162,7 @@ namespace mysql_conection
                 PegarValorTabela(1), //"Descrção"
                 PegarValorTabela(7), //"Cód. barras"
                 PegarValorTabela(10),//"Preço"
-                PegarValorTabela(11),//"Preço atacado"
-                PegarValorTabela(12),//"Preço Promoção"
+                //PegarValorTabela(9),//"Preço Custo"
                 eNull,
                 tb_subTotalDesconto.Text,
                 tb_desconto.Text

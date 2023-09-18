@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel1 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
@@ -43,8 +43,6 @@
             this.tabPage1 = new System.Windows.Forms.TabPage();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btn_limparCampo = new System.Windows.Forms.Button();
-            this.num_precoPromocao = new System.Windows.Forms.NumericUpDown();
-            this.num_precoAtacado = new System.Windows.Forms.NumericUpDown();
             this.num_precoVenda = new System.Windows.Forms.NumericUpDown();
             this.num_precoCusto = new System.Windows.Forms.NumericUpDown();
             this.numb_estoque = new System.Windows.Forms.NumericUpDown();
@@ -59,8 +57,6 @@
             this.label23 = new System.Windows.Forms.Label();
             this.tb_observacao = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
-            this.label19 = new System.Windows.Forms.Label();
-            this.label15 = new System.Windows.Forms.Label();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
@@ -83,8 +79,6 @@
             this.tabEstoque.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_precoPromocao)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_precoAtacado)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_precoVenda)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_precoCusto)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numb_estoque)).BeginInit();
@@ -154,14 +148,14 @@
             this.dgv_produtos.AllowUserToAddRows = false;
             this.dgv_produtos.AllowUserToDeleteRows = false;
             this.dgv_produtos.BackgroundColor = System.Drawing.SystemColors.ControlLightLight;
-            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.dgv_produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dgv_produtos.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
             this.dgv_produtos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgv_produtos.EnableHeadersVisualStyles = false;
             this.dgv_produtos.Location = new System.Drawing.Point(5, 42);
@@ -229,6 +223,7 @@
             this.tabEstoque.SelectedIndex = 0;
             this.tabEstoque.Size = new System.Drawing.Size(680, 556);
             this.tabEstoque.TabIndex = 7;
+            this.tabEstoque.SelectedIndexChanged += new System.EventHandler(this.tabEstoque_SelectedIndexChanged);
             // 
             // tabPage1
             // 
@@ -247,8 +242,6 @@
             // tabPage2
             // 
             this.tabPage2.Controls.Add(this.btn_limparCampo);
-            this.tabPage2.Controls.Add(this.num_precoPromocao);
-            this.tabPage2.Controls.Add(this.num_precoAtacado);
             this.tabPage2.Controls.Add(this.num_precoVenda);
             this.tabPage2.Controls.Add(this.num_precoCusto);
             this.tabPage2.Controls.Add(this.numb_estoque);
@@ -261,8 +254,6 @@
             this.tabPage2.Controls.Add(this.label23);
             this.tabPage2.Controls.Add(this.tb_observacao);
             this.tabPage2.Controls.Add(this.label18);
-            this.tabPage2.Controls.Add(this.label19);
-            this.tabPage2.Controls.Add(this.label15);
             this.tabPage2.Controls.Add(this.label16);
             this.tabPage2.Controls.Add(this.label17);
             this.tabPage2.Controls.Add(this.label12);
@@ -300,39 +291,11 @@
             this.btn_limparCampo.UseVisualStyleBackColor = false;
             this.btn_limparCampo.Click += new System.EventHandler(this.btn_limparCampo_Click);
             // 
-            // num_precoPromocao
-            // 
-            this.num_precoPromocao.DecimalPlaces = 2;
-            this.num_precoPromocao.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_precoPromocao.Location = new System.Drawing.Point(441, 174);
-            this.num_precoPromocao.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.num_precoPromocao.Name = "num_precoPromocao";
-            this.num_precoPromocao.Size = new System.Drawing.Size(99, 24);
-            this.num_precoPromocao.TabIndex = 124;
-            // 
-            // num_precoAtacado
-            // 
-            this.num_precoAtacado.DecimalPlaces = 2;
-            this.num_precoAtacado.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_precoAtacado.Location = new System.Drawing.Point(309, 172);
-            this.num_precoAtacado.Maximum = new decimal(new int[] {
-            100000,
-            0,
-            0,
-            0});
-            this.num_precoAtacado.Name = "num_precoAtacado";
-            this.num_precoAtacado.Size = new System.Drawing.Size(104, 24);
-            this.num_precoAtacado.TabIndex = 123;
-            // 
             // num_precoVenda
             // 
             this.num_precoVenda.DecimalPlaces = 2;
             this.num_precoVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.num_precoVenda.Location = new System.Drawing.Point(178, 174);
+            this.num_precoVenda.Location = new System.Drawing.Point(137, 173);
             this.num_precoVenda.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -359,7 +322,7 @@
             // numb_estoque
             // 
             this.numb_estoque.Font = new System.Drawing.Font("Microsoft Sans Serif", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.numb_estoque.Location = new System.Drawing.Point(572, 173);
+            this.numb_estoque.Location = new System.Drawing.Point(253, 173);
             this.numb_estoque.Maximum = new decimal(new int[] {
             100000,
             0,
@@ -486,34 +449,16 @@
             // label18
             // 
             this.label18.AutoSize = true;
-            this.label18.Location = new System.Drawing.Point(569, 156);
+            this.label18.Location = new System.Drawing.Point(250, 156);
             this.label18.Name = "label18";
             this.label18.Size = new System.Drawing.Size(80, 13);
             this.label18.TabIndex = 99;
             this.label18.Text = "Estoque Atual *";
             // 
-            // label19
-            // 
-            this.label19.AutoSize = true;
-            this.label19.Location = new System.Drawing.Point(438, 156);
-            this.label19.Name = "label19";
-            this.label19.Size = new System.Drawing.Size(101, 13);
-            this.label19.TabIndex = 98;
-            this.label19.Text = "Preço de Promoção";
-            // 
-            // label15
-            // 
-            this.label15.AutoSize = true;
-            this.label15.Location = new System.Drawing.Point(306, 156);
-            this.label15.Name = "label15";
-            this.label15.Size = new System.Drawing.Size(93, 13);
-            this.label15.TabIndex = 97;
-            this.label15.Text = "Preço de Atacado";
-            // 
             // label16
             // 
             this.label16.AutoSize = true;
-            this.label16.Location = new System.Drawing.Point(175, 158);
+            this.label16.Location = new System.Drawing.Point(134, 157);
             this.label16.Name = "label16";
             this.label16.Size = new System.Drawing.Size(84, 13);
             this.label16.TabIndex = 96;
@@ -681,8 +626,6 @@
             this.tabPage1.PerformLayout();
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.num_precoPromocao)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.num_precoAtacado)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_precoVenda)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.num_precoCusto)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.numb_estoque)).EndInit();
@@ -713,8 +656,6 @@
         private System.Windows.Forms.Label label23;
         private System.Windows.Forms.TextBox tb_observacao;
         private System.Windows.Forms.Label label18;
-        private System.Windows.Forms.Label label19;
-        private System.Windows.Forms.Label label15;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.Label label12;
@@ -736,8 +677,6 @@
         private System.Windows.Forms.ComboBox cbx_setor;
         private System.Windows.Forms.ComboBox cbx_fornecedor;
         private System.Windows.Forms.NumericUpDown numb_estoque;
-        private System.Windows.Forms.NumericUpDown num_precoPromocao;
-        private System.Windows.Forms.NumericUpDown num_precoAtacado;
         private System.Windows.Forms.NumericUpDown num_precoVenda;
         private System.Windows.Forms.NumericUpDown num_precoCusto;
         private System.Windows.Forms.Button btn_limparCampo;
