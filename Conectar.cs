@@ -17,7 +17,7 @@ namespace mysql_conection
         private static SQLiteConnection SQLite;
         public static Boolean status = false;
         public static string banco = "Desconected"; //SQLite
-        public static string path2 = @"\database\LeinPDV_database.db";
+        public static string path2 = Auth.caminho + @"\database\LeinPDV_database.db";
 
         //public static MySqlConnection ConectionMysql()
         //{
@@ -45,7 +45,8 @@ namespace mysql_conection
         {
             try
             {
-                SQLite = new SQLiteConnection("Data Source = D:\\Curso C#\\WindowsForm\\JacaPDV\\database\\LeinPDV_database.db");
+               // SQLite = new SQLiteConnection("Data Source = D:\\Curso C#\\WindowsForm\\JacaPDV\\database\\LeinPDV_database.db");
+                SQLite = new SQLiteConnection("Data Source =" + Auth.caminhoBanco + Auth.nomeBanco);
                 SQLite.Open();
                 status = true;
                 return SQLite;

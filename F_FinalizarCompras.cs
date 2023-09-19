@@ -46,7 +46,7 @@ namespace mysql_conection
             string titulo =
                 $"\n   {Auth.slogan}\r\n" +
                 $"   {Auth.endereco} Nº.{Auth.numero} {Auth.bairro}\r\n" +
-                $"   {Auth.cidade} - \r\n" +
+                $"   {Auth.cidade} - {Auth.uf} \r\n" +
                 $"   CNPJ: {Auth.CNPJ}\r\n" +
                 $"   DATA / HORA: {f_ConfirProdDados.lb_dataHora.Text}\r" +
                 "\n   =======================================================\n" +

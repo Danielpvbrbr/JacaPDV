@@ -122,9 +122,10 @@
   <ItemGroup>
     <Compile Include="Auth.cs" />
     <Compile Include="CalcularPercet.cs" />
+    <Compile Include="AtualizarInfoEmpresa.cs" />
     <Compile Include="Fabricante.cs" />
-    <Compile Include="Setor - Cópia .cs" />
     <Compile Include="Setor.cs" />
+    <Compile Include="Cargo.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="DataReverso.cs" />
     <Compile Include="Conectar.cs" />

@@ -16,7 +16,8 @@ namespace mysql_conection
 {
     public partial class F_Login : Form
     {
-        DataTable dt = new DataTable();
+        DataTable dt_user = new DataTable();
+        DataTable dt_empresa = new DataTable();
         public F_Login()
         {
             InitializeComponent();
@@ -31,6 +32,7 @@ namespace mysql_conection
 
         private void btn_Acessar_Click(object sender, EventArgs e)
         {
+
             F_Home f_Home = new F_Home();
             string usuario = tb_user.Text;
             string password = tb_password.Text;
@@ -49,24 +51,25 @@ namespace mysql_conection
                     return;
                 }
             }
-            
-            dt = SendDB.Get("SELECT * FROM tb_usuarios WHERE user_funcionario='" + usuario + "' AND senha_funcionario= '" + password + "';");
-             
-            if (dt.Rows.Count == 1)
+
+            dt_user = SendDB.Get("SELECT * FROM tb_usuarios WHERE user_funcionario='" + usuario + "' AND senha_funcionario= '" + password + "';");
+
+            if (dt_user.Rows.Count == 1)
             {
-                
-                Auth.nome = dt.Rows[0].Field<string>("nome_funcionario");
-                Auth.user = dt.Rows[0].Field<string>("user_funcionario");
-                Auth.senha = dt.Rows[0].Field<string>("senha_funcionario");
-                Auth.privilegio_funcionario = dt.Rows[0].Field<string>("privilegio_funcionario");
-                Auth.status = Convert.ToInt32(dt.Rows[0].Field<Int64>("status").ToString());
-                Auth.permiss_estoque = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_estoque").ToString());
-                Auth.permiss_Pdv = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_Pdv").ToString());
-                Auth.permiss_gerenciamento = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_gerenciamento").ToString());
-                Auth.permiss_contas_receber = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_contas_receber").ToString());
-                Auth.permiss_clientes = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_clientes").ToString());
-                Auth.permiss_funcionarios = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_funcionarios").ToString());
-                Auth.permiss_usuarios = Convert.ToInt32(dt.Rows[0].Field<Int64>("permiss_usuarios").ToString());
+
+                Auth.nome = dt_user.Rows[0].Field<string>("nome_funcionario");
+                Auth.user = dt_user.Rows[0].Field<string>("user_funcionario");
+                Auth.senha = dt_user.Rows[0].Field<string>("senha_funcionario");
+                Auth.privilegio_funcionario = dt_user.Rows[0].Field<string>("privilegio_funcionario");
+                Auth.status = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("status").ToString());
+                Auth.permiss_estoque = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_estoque").ToString());
+                Auth.permiss_Pdv = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_Pdv").ToString());
+                Auth.permiss_gerenciamento = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_gerenciamento").ToString());
+                Auth.permiss_contas_receber = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_contas_receber").ToString());
+                Auth.permiss_clientes = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_clientes").ToString());
+                Auth.permiss_funcionarios = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_funcionarios").ToString());
+                Auth.permiss_usuarios = Convert.ToInt32(dt_user.Rows[0].Field<Int64>("permiss_usuarios").ToString());
+                AtualizarInfoEmpresa.Atualizar();
 
                 f_Home.ShowDialog();
             }
